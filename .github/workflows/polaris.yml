@@ -29,10 +29,7 @@ jobs:
           submodules: false
   
       - name: Build with Maven
-        run: mvn -DskipTests=true -V -ntp install
-      
-      - name: Checkout Source
-        uses: actions/checkout@v3
+        run: mvn clean install -DskipTests
       
       - name: Polaris Scan
         uses: blackduck-inc/black-duck-security-scan@v2.0.0
@@ -44,6 +41,8 @@ jobs:
           
           ### SCANNING: Optional fields
           polaris_application_name: "pixee"
+          polaris_assessment_mode: "BUILD_CAPTURE"
+          polaris_build_command: "mvn clean install -DskipTests"
           
           ### PULL REQUEST COMMENTS: Uncomment below to enable
           polaris_prComment_enabled: true 
@@ -52,10 +51,3 @@ jobs:
           ### SARIF report parameters
           polaris_reports_sarif_create: true
           polaris_upload_sarif_report: true
-          
-          ### Test Build-less mode
-          #polaris_assessment_mode: SOURCE_UPLOAD
-          
-          ### Signature scan
-          #polaris_test_sca_type: "SCA-SIGNATURE"
-
