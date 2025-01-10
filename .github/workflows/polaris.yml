@@ -41,8 +41,6 @@ jobs:
           
           ### SCANNING: Optional fields
           polaris_application_name: "pixee"
-          #polaris_assessment_mode: "BUILD_CAPTURE"
-          #polaris_build_command: "mvn clean install -DskipTests"
           
           ### PULL REQUEST COMMENTS: Uncomment below to enable
           polaris_prComment_enabled: true 
